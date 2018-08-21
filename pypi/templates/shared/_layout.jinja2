@@ -6,15 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="pyramid web application">
     <meta name="author" content="Pylons Project">
-    <link rel="shortcut icon" href="{{request.static_url('pypi:static/pyramid-16x16.png')}}">
+    <link rel="shortcut icon" href="{{request.static_url('pypi:static/img/pyramid-16x16.png')}}">
 
-    <title>Cookiecutter Alchemy project for the Pyramid Web Framework</title>
+    <title>Python Package Index (demo)</title>
 
     <!-- Bootstrap core CSS -->
     <link href="//oss.maxcdn.com/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this scaffold -->
-    <link href="{{request.static_url('pypi:static/theme.css')}}" rel="stylesheet">
+    <link href="{{request.static_url('pypi:static/css/theme.css')}}" rel="stylesheet">
+    <link href="{{request.static_url('pypi:static/css/theme-override.css')}}" rel="stylesheet">
+    <link href="{{request.static_url('pypi:static/css/site.css')}}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -24,34 +26,45 @@
   </head>
 
   <body>
-
-    <div class="starter-template">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2">
-            <img class="logo img-responsive" src="{{request.static_url('pypi:static/pyramid.png') }}" alt="pyramid web framework">
-          </div>
-          <div class="col-md-10">
-            {% block content %}
-                <p>No content</p>
-            {% endblock content %}
-          </div>
-        </div>
-        <div class="row">
-          <div class="links">
-            <ul>
-              <li><i class="glyphicon glyphicon-cog icon-muted"></i><a href="https://github.com/Pylons/pyramid">Github Project</a></li>
-              <li><i class="glyphicon glyphicon-globe icon-muted"></i><a href="https://webchat.freenode.net/?channels=pyramid">IRC Channel</a></li>
-              <li><i class="glyphicon glyphicon-home icon-muted"></i><a href="https://pylonsproject.org">Pylons Project</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="row">
-          <div class="copyright">
-            Copyright &copy; Pylons Project
-          </div>
-        </div>
+    <div id="page-content">
+      <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Brand</a>
+              </div>
+          
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="#">Help</a></li>
+                  <li><a href="#">Donate</a></li>
+                  <li><a href="#">Login</a></li>
+                  <li><a href="#" id="last-nav-link">Register</a></li>
+                </ul>
+              </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+      </nav>
+      <div class="starter-template">
+        {% block content %}
+            <p>No content</p>
+        {% endblock content %}
       </div>
+
+      <footer>
+        <div class="copyright">
+          This is a fake site built during a course.<br>
+          It's meant to model / simulate the real <a href="https://pypi.org">pypi.org</a>
+          <br>
+          Copyright &copy <a href="https://training.talkpython.fm">Talking python</a>
+        </div>
+      </footer>
     </div>
 
 

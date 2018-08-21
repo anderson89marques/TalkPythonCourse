@@ -15,7 +15,7 @@ from ..models import (
     get_session_factory,
     get_tm_session,
     )
-from ..models import MyModel
+from ..models.packages import Package, Release
 
 
 def usage(argv):
@@ -41,5 +41,25 @@ def main(argv=sys.argv):
     with transaction.manager:
         dbsession = get_tm_session(session_factory, transaction.manager)
 
-        model = MyModel(name='one', value=1)
-        dbsession.add(model)
+        p = Package()
+        p.id = "Pyramid"
+        p.summary = "Micro framework"
+        p.author_name = "Chris"
+        p.author_email = "chris@gmail.com"
+        p.license = 'MIT'
+
+        r1 = Release()
+        r1.major_ver = 2
+        r1.minor_ver = 0
+        r1.build_ver = 4
+        r1.size = 105_000
+
+        r2 = Release()
+        r2.major_ver = 1
+        r2.minor_ver = 0
+        r2.build_ver = 3
+        r2.size = 100_000
+        p.releases.append(r1)
+        p.releases.append(r2)
+
+        dbsession.add(p)

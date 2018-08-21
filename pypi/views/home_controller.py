@@ -3,6 +3,8 @@ from pyramid.view import view_config
 
 from sqlalchemy.exc import DBAPIError
 
+from pypi.services import package_service, user_service
+
 
 def get_test_packages():
     return [
@@ -12,8 +14,15 @@ def get_test_packages():
     ]
 
 
-@view_config(route_name='home', renderer='pypi:templates/home/home_index.jinja2')
-def home_index(request):
+@view_config(route_name='home', renderer='pypi:templates/home/index.jinja2')
+def index(request):
     return {
-        'packages': get_test_packages()
+        'packages': package_service.lastest_releases(request.dbsession),
+        'package_count': package_service.package_count(request.dbsession),
+        'release_count': package_service.release_count(request.dbsession),
+        'user_count': user_service.user_count(request.dbsession)
     }
+
+@view_config(route_name='about', renderer='pypi:templates/home/about.jinja2')
+def about(request):
+    return {}
