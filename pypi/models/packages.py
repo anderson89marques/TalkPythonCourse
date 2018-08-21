@@ -19,6 +19,7 @@ class Package(Base):
     __tablename__ = 'packages'
     id = Column(String, primary_key=True)
     created_date = Column(DateTime, default=datetime.now)
+    last_updated = Column(DateTime, default=datetime.now)
     summary = Column(String, nullable=True)
     description = Column(String, nullable=True)
 
