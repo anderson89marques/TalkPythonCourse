@@ -22,3 +22,5 @@ test
 __pycache__
 .venv
 .vscode
+.pytest_cache
+:memory

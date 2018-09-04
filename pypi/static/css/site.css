@@ -252,3 +252,7 @@ h3 {
 .release-entry .when {
     margin-left: 50px;
 }
+
+.error-msg {
+    color: rgb(87, 2, 2);
+}

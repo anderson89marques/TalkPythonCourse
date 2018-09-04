@@ -18,6 +18,9 @@
     <link href="{{request.static_url('pypi:static/css/theme-override.css')}}" rel="stylesheet">
     <link href="{{request.static_url('pypi:static/css/site.css')}}" rel="stylesheet">
 
+    {% block additional_css %}
+    {% endblock %}
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" integrity="sha384-0s5Pv64cNZJieYFkXYOTId2HMA2Lfb6q2nAcx2n0RTLUnCAoTTsS0nKEO27XyKcY" crossorigin="anonymous"></script>
@@ -45,8 +48,13 @@
                 <ul class="nav navbar-nav navbar-right">
                   <li><a href="#">Help</a></li>
                   <li><a href="#">Donate</a></li>
-                  <li><a href="#">Login</a></li>
-                  <li><a href="#" id="last-nav-link">Register</a></li>
+                  {% if request.user %}
+                    <li><a href="">Hello, {{request.user.name}}</a></li>
+                    <li><a href="{{request.route_url('logout')}}">Logout</a></li>
+                  {% else %}
+                    <li><a href="{{request.route_url('login')}}">Login</a></li>
+                    <li><a href="{{request.route_url('register')}}" id="last-nav-link">Register</a></li>
+                  {% endif %}
                 </ul>
               </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
