@@ -45,11 +45,17 @@ class AccountControllerTests(BaseTest):
     def test_register_validation_valid(self):
         dummy_req = testing.DummyRequest(dbsession=self.session)
         dummy_req.POST = {'email': 'andersonoanjo18@gmail.com',
-                             'name': 'Anderson Marques',
-                             'password': '12345'}
+                          'name': 'Anderson Marques',
+                          'password': '12345'}
         from pypi.views.account_controller import register_post
         info = register_post(dummy_req)
         self.assertEqual(info.status_code, 302)        
 
     def test_register_validation_no_email(self):
-        pass
+        dummy_req = testing.DummyRequest(dbsession=self.session)
+        dummy_req.POST = {'email': '',
+                          'name': 'Anderson Marques',
+                          'password': '12345'}
+        from pypi.views.account_controller import register_post
+        info = register_post(dummy_req)
+        self.assertTrue('error' in info)
